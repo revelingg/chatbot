@@ -11,7 +11,7 @@ const responses = [ //responses u can add to this as u want
     "Hello there!",
     "I'm just a simple bot.",
     "How can I help?",
-    "Beep boop! 🤖",
+    "Beep boop!",
 ];
 function getRandomResponse() { // controls the response randomness
     return responses[Math.floor(Math.random() * responses.length)];
