@@ -1,3 +1,2 @@
 discord user bot library 
-v1 is for just one account 
-v4 is for as many accounts as u can create without getting banned 
+test 2 shows default response examples if u cant run with gpt ai 
