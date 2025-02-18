@@ -11,7 +11,7 @@ const responses = [ //responses u can add to this as u want
     "Hello there!",
     "I'm just a simple bot.",
     "How can I help?",
-    "Beep boop!",
+    "Beep boop! 🤖",
 ];
 function getRandomResponse() { // controls the response randomness
     return responses[Math.floor(Math.random() * responses.length)];
@@ -109,14 +109,13 @@ client.on("messageCreate", async function (message) {
         console.log("Going to sleep")
         return message.channel.send("Goodnight! See you later.");
     }
+
     if(!isActive){ // if u text the bot and get no response, its most likely off and will alert you
         console.log("Bot is asleep issue the Wake up command")
         return; 
     }
 
-    
-
-    if (!isActive) return; // Ignore messages when "asleep"
+   
 
     // Handle Normal AI Response
     handleMessage(message); 
