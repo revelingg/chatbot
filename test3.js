@@ -35,7 +35,7 @@ const minTimeBetweenMessages = 6000; // 6 seconds between messages
 
 // Wait for bot to initialize and then log it
 client.on("ready", () => {
-    console.log(`\nBot is online as ${client.user.tag}`); //the bot account being used
+    console.log(`Bot is online as ${client.user.tag}`); //the bot account being used
 });
 
 
@@ -61,7 +61,7 @@ async function handleMessage(message) {
 
             const response = gptResponse.choices[0].text //stores the response function
 
-            console.log("\nGPT-3 Response:", response); // Debugging log use // to block it out once everything works
+            console.log("GPT-3 Response:", response); // Debugging log use // to block it out once everything works
     
             // Send the response with random delay 
             if (message.channel.type === 'dm') { // if the chat is in dm 
@@ -69,9 +69,9 @@ async function handleMessage(message) {
                     
                     await message.reply(response); // Respond directly in DM
                     
-                    console.log("\nReplied in DM:", response); // Debugging log
+                    console.log("Replied in DM:", response); // Debugging log
                 } catch (error) {
-                    console.error("\nError replying to DM:", error); // Debugging log
+                    console.error("Error replying to DM:", error); // Debugging log
                 }
             } else {
                 try{
@@ -79,11 +79,11 @@ async function handleMessage(message) {
                    console.log("Message channel type:", message.channel.type);
                 }
                 catch (error){
-                    console.error("\nError sending message in text channel:", error);
+                    console.error("Error sending message in text channel:", error);
                 }
             }
         } catch(error){
-            console.error("\nError with OpenAI API:", error);
+            console.error("Error with OpenAI API:", error);
         }
         
     }, getRandomDelay());
@@ -103,6 +103,7 @@ client.on("messageCreate", async function (message) {
 
     const msg = message.content.toLowerCase();
 
+    
     if (msg.includes("wake up bot")) { // Wake up command ad tweaks to allow it to be able to respond from dms also validate if the account is actually turned off or wontrespond
         isActive = true;
         console.log("Waking up");
@@ -115,8 +116,12 @@ client.on("messageCreate", async function (message) {
         console.log("Going to sleep")
         return message.channel.send("Goodnight! See you later.");
     }
+    if(!isActive){ // if u text the bot and get no response, its most likely off and will alert you
+        console.log("Bot is asleep issue the Wake up command")
+        return; 
+    } 
 
-    if (!isActive) return; // Ignore messages when "asleep"
+    
 
     // Handle Normal AI Response
     handleMessage(message);
