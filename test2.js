@@ -95,10 +95,7 @@ client.on("messageCreate", async function (message) {
 
     const msg = message.content.toLowerCase();
 
-    if(!isActive){ // if u text the bot and get no response, its most likely off and will alert you
-        console.log("Bot is asleep issue the Wake up command")
-        return; 
-    }
+    
     if (msg.includes("wake up bot")) { // Wake up command ad tweaks to allow it to be able to respond from dms also validate if the account is actually turned off or wontrespond
         isActive = true;
         
@@ -111,6 +108,10 @@ client.on("messageCreate", async function (message) {
         
         console.log("Going to sleep")
         return message.channel.send("Goodnight! See you later.");
+    }
+    if(!isActive){ // if u text the bot and get no response, its most likely off and will alert you
+        console.log("Bot is asleep issue the Wake up command")
+        return; 
     }
 
     
