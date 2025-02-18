@@ -11,7 +11,7 @@ const responses = [ //responses u can add to this as u want
     "Hello there!",
     "I'm just a simple bot.",
     "How can I help?",
-    "Beep boop! 🤖",
+    "Beep boop!",
 ];
 function getRandomResponse() { // controls the response randomness
     return responses[Math.floor(Math.random() * responses.length)];
@@ -37,7 +37,8 @@ client.on("ready", () => {
 
 // Function to handle messages
 async function handleMessage(message) {
-    if (message.author.id === client.user.id) return; // Ignore self messages
+    if (message.author.id === client.user.id) return; // Ignore self messages but u cann comment this out if u want it to talk to itself without a user invovled
+    // and if you want you can make the bot respond in console instead of in dms so it talks to itself but still doesnt give away that its a bot
     console.log("Received message:", message.content);
 
     
